@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import * as React from 'react';
+import { Routes, Route, Outlet, NavLink } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<p>There's nothing here: 404!</p>} />
+      </Route>
+    </Routes>
+  );
+};
+
+const Layout = () => {
+  const style = ({ isActive }) => ({
+    fontWeight: isActive ? 'bold' : 'normal',
+  });
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Hello World</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <>
+      <h1>React Router</h1>
 
-export default App
+      <nav
+        style={{
+          borderBottom: 'solid 1px',
+          paddingBottom: '1rem',
+        }}
+      >
+        <NavLink to="/home" style={style}>
+          Home
+        </NavLink>
+        <NavLink to="/about" style={style}>
+          About
+        </NavLink>
+      </nav>
+
+      <main style={{ padding: '1rem 0' }}>
+        <Outlet />
+      </main>
+    </>
+  );
+};
+
+const Home = () => {
+  return (
+    <>
+      <h2>Home</h2>
+    </>
+  );
+};
+
+const About = () => {
+  return (
+    <>
+      <h2>About</h2>
+    </>
+  );
+};
+
+export default App;
