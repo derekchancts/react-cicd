@@ -47,7 +47,7 @@ const Layout = () => {
 const Home = () => {
   return (
     <>
-      <h2>Home</h2>
+      <h2>Home - This is anotehr home</h2>
     </>
   );
 };
