@@ -47,7 +47,7 @@ const Layout = () => {
 const Home = () => {
   return (
     <>
-      <h2>Home - This is anotehr home</h2>
+      <h2>Home</h2>
     </>
   );
 };
@@ -55,7 +55,7 @@ const Home = () => {
 const About = () => {
   return (
     <>
-      <h2>About</h2>
+      <h2>About 1</h2>
     </>
   );
 };
